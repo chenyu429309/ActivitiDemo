@@ -1,0 +1,31 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans   http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="processEngineConfiguration"
+		class="org.activiti.engine.impl.cfg.StandaloneProcessEngineConfiguration">
+
+		<property name="jdbcUrl" value="jdbc:mysql://localhost:3306/db_activiti" />
+		<property name="jdbcDriver" value="com.mysql.jdbc.Driver" />
+		<property name="jdbcUsername" value="root" />
+		<property name="jdbcPassword" value="123" />
+
+		<property name="databaseSchemaUpdate" value="true" />
+
+<!-- 		<property name="jobExecutorActivate" value="false" /> -->
+<!-- 		<property name="asyncExecutorEnabled" value="true" /> -->
+<!-- 		<property name="asyncExecutorActivate" value="false" /> -->
+
+
+		<property name="mailServerHost" value="smtp.163.com" />
+		<property name="mailServerPort" value="25" />
+<!-- 		<property name="mailServerDefaultFrom" value="chenyu429309@163.com" /> -->
+		<property name="mailServerUsername" value="chenyu429309@163.com" />
+		<property name="mailServerPassword" value="qiang429309" />
+		<property name="mailServerUseSSL" value="true" />
+
+<!-- 		<property name="mailServerHost" value="smtp.163.com" /> -->
+<!-- 		<property name="mailServerPort" value="465" /> -->
+	</bean>
+
+</beans>
