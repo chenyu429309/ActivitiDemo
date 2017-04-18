@@ -22,15 +22,25 @@ public class ProcessTestMyFirstTest {
 
 	@Test
 	public void startProcess() throws Exception {
+		// 获取部署service
 		RepositoryService repositoryService = activitiRule.getRepositoryService();
-		repositoryService.createDeployment().addInputStream("myFirstTest.bpmn20.xml",
-				new FileInputStream(filename)).deploy();
+
+		repositoryService// 部署service
+				.createDeployment()// 创建部署
+				.addInputStream("myFirstTest.bpmn20.xml", new FileInputStream(filename))// 加载部署相关的文件
+				.deploy();
 		RuntimeService runtimeService = activitiRule.getRuntimeService();
 		Map<String, Object> variableMap = new HashMap<String, Object>();
 		variableMap.put("name", "Activiti");
-		ProcessInstance processInstance = runtimeService.startProcessInstanceByKey("myFirstTest", variableMap);
-		assertNotNull(processInstance.getId());
-		System.out.println("id " + processInstance.getId() + " "
-				+ processInstance.getProcessDefinitionId());
+		variableMap.put("to", "chenyu429309@163.com");
+		variableMap.put("from", "chenyu429309@163.com");
+		variableMap.put("subject", "chenyu429309@163.com");
+		variableMap.put("charset", "UTF-8");
+		variableMap.put("cc", "chenyu429309@163.com");
+		variableMap.put("html", "chenyu429309@163.com");
+		ProcessInstance processInstance = runtimeService//
+				.startProcessInstanceByKey("myFirstTest", variableMap);//根据key来找寻最新的实例
+		assertNotNull(processInstance.getId());// 验证进程实例的id是否为空
+		System.out.println("id " + processInstance.getId() + " " + processInstance.getProcessDefinitionId());
 	}
 }

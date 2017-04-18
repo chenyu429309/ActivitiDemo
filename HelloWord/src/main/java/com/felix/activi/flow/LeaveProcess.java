@@ -1,11 +1,16 @@
 package com.felix.activi.flow;
 
+import static org.junit.Assert.assertNotNull;
+
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.activiti.engine.IdentityService;
 import org.activiti.engine.ProcessEngine;
 import org.activiti.engine.ProcessEngines;
+import org.activiti.engine.identity.User;
 import org.activiti.engine.repository.Deployment;
 import org.activiti.engine.runtime.ProcessInstance;
 import org.activiti.engine.task.Task;
@@ -44,15 +49,29 @@ public class LeaveProcess {
 		/**
 		 * 开始流程到第一个节点
 		 */
+//		IdentityService identityService=  processengine.getIdentityService();
+//		User user=identityService.newUser("张三");
+//		user.setEmail("chenyu429309@163.com");
+//		user.setId("张三");
+//		identityService.saveUser(user);
+//		User currentUser=identityService.createUserQuery()
+//						.userId("张三")
+//						.singleResult();
+//		assertNotNull(currentUser);
+		
+		
 		Map<String,Object> variables=new HashMap<String,Object>();
-		variables.put("to","chenyu429309@163.com");
-		variables.put("from","chenyu429309@163.com");
-		variables.put("subject","chenyu429309@163.com");
-		variables.put("charset","UTF-8");
-		variables.put("cc","chenyu429309@163.com");
-		variables.put("html","chenyu429309@163.com");
+		variables.put("leader", "张三");
+		variables.put("duedate", new Date());
+		variables.put("priority", 10);
+//		variables.put("to","chenyu429309@163.com");
+//		variables.put("from","chenyu429309@163.com");
+//		variables.put("subject","chenyu429309@163.com");
+//		variables.put("charset","UTF-8");
+//		variables.put("cc","chenyu429309@163.com");
+//		variables.put("html","chenyu429309@163.com");
 		ProcessInstance pi = processengine.getRuntimeService()// 获取运行时Service
-				.startProcessInstanceByKey("myFirstTest",variables);// 根据KEY启动流程
+				.startProcessInstanceByKey("fffff",variables);// 根据KEY启动流程
 		System.out.println(pi.getActivityId());
 		System.out.println(pi.getBusinessKey());
 		System.out.println(pi.getDeploymentId());
@@ -73,7 +92,7 @@ public class LeaveProcess {
 	public void findTask() {
 		List<Task> taskList = processengine.getTaskService()// 获取任务Service
 				.createTaskQuery()// 创建任务查询
-				.taskAssignee("java1234_晓峰")// 任务委派人
+				.taskAssignee("张三")// 任务委派人
 				.list();// 获取委派人的事项列表
 		for (Task task : taskList) {
 			System.out.println(task.getId());//任务ID
@@ -93,7 +112,7 @@ public class LeaveProcess {
 	@Test
 	public void completeTask() {
 		processengine.getTaskService()//任务相关Service
-					.complete("20004");//指定要完成的任务
+					.complete("80007");//指定要完成的任务
 	}
 	//
 
