@@ -58,8 +58,6 @@ public class LeaveProcess {
 //						.userId("张三")
 //						.singleResult();
 //		assertNotNull(currentUser);
-		
-		
 		Map<String,Object> variables=new HashMap<String,Object>();
 		variables.put("leader", "张三");
 		variables.put("duedate", new Date());

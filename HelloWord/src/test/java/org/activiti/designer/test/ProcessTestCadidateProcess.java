@@ -23,8 +23,8 @@ import org.junit.Test;
 
 public class ProcessTestCadidateProcess {
 
-	private String filename = "D:\\gitDEmo\\HelloWord\\src\\main\\resources\\diagrams\\taskCandidateTest.bpmn";
-
+//	private String filename = "D:\\gitDEmo\\HelloWord\\src\\main\\resources\\diagrams\\taskCandidateTest.bpmn";
+	private String filename = "/Users/Felix/git/ActivitiDemo/HelloWord/src/main/resources/diagrams/taskCandidateTest.bpmn";
 	@Rule
 	public ActivitiRule activitiRule = new ActivitiRule();
 	private Logger logger=Logger.getLogger(ProcessTestCadidateProcess.class);

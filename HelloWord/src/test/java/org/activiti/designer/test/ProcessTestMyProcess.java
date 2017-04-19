@@ -13,10 +13,9 @@ import org.activiti.engine.test.ActivitiRule;
 import org.junit.Rule;
 import org.junit.Test;
 
-public class ProcessTestMyFirstTest {
+public class ProcessTestMyProcess {
 
-	private String filename = "/Users/Felix/git/ActivitiDemo/HelloWord/src/main/resources/diagrams/HelloWord.bpmn";
-//	private String filename = "/Users/Felix/git/ActivitiDemo/HelloWord/src/main/resources/diagrams/taskCandidateTest.bpmn";
+	private String filename = "/Users/Felix/git/ActivitiDemo/HelloWord/src/main/resources/diagrams/test.bpmn";
 
 	@Rule
 	public ActivitiRule activitiRule = new ActivitiRule();
@@ -24,18 +23,12 @@ public class ProcessTestMyFirstTest {
 	@Test
 	public void startProcess() throws Exception {
 		RepositoryService repositoryService = activitiRule.getRepositoryService();
-		repositoryService.createDeployment().addInputStream("myFirstTest.bpmn20.xml",
+		repositoryService.createDeployment().addInputStream("myProcess.bpmn20.xml",
 				new FileInputStream(filename)).deploy();
 		RuntimeService runtimeService = activitiRule.getRuntimeService();
 		Map<String, Object> variableMap = new HashMap<String, Object>();
 		variableMap.put("name", "Activiti");
-		variableMap.put("to","chenyu429309@163.com");
-		variableMap.put("from","chenyu429309@163.com");
-		variableMap.put("subject","chenyu429309@163.com");
-		variableMap.put("charset","UTF-8");
-		variableMap.put("cc","chenyu429309@163.com");
-		variableMap.put("html","chenyu429309@163.com");
-		ProcessInstance processInstance = runtimeService.startProcessInstanceByKey("myFirstTest", variableMap);
+		ProcessInstance processInstance = runtimeService.startProcessInstanceByKey("myProcess", variableMap);
 		assertNotNull(processInstance.getId());
 		System.out.println("id " + processInstance.getId() + " "
 				+ processInstance.getProcessDefinitionId());
